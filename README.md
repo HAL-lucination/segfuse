@@ -3,7 +3,7 @@
 # [PG2020 Submission] 360 Depth Estimation in the Wild - The Depth360 Dataset and the SegFuse Network
 
 <p align='center'>
-<img src='teaser.png'>
+<img src='src/teaser.png'>
 </p>
 
 ## Getting Started
