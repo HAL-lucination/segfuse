@@ -25,7 +25,7 @@ from dataset.structured3D import OmniDepthDataset
 from Utils.visualization import VisdomVisualizer
 from Utils.berhu import Berhu as ReverseHuberLoss
 from Utils.Segmentation import get_seg as get_seg
-import os.path as osp
+import os.path as osp 
 
 parser = argparse.ArgumentParser(description='Training script for 360 layout',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
