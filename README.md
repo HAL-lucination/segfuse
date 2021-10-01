@@ -1,6 +1,6 @@
 # segfuse
 
-# [PG2020 Submission] 360 Depth Estimation in the Wild - The Depth360 Dataset and the SegFuse Network
+# [IEEEVR 2022 Submission] 360 Depth Estimation in the Wild - The Depth360 Dataset and the SegFuse Network
 
 <p align='center'>
 <img src='src/teaser.png'>
