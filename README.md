@@ -9,7 +9,7 @@
 ## Getting Started
 #### Requirements
 - Python (tested on 3.7.4)
-- PyTorch (tested on 1.4.0)
+- PyTorch (tested on 1.6.0)
 - Other dependencies
 ```
 pip install -r requirements.txt
