@@ -11,7 +11,7 @@ import torch
 from torch.utils import data
 from torch.utils.data import DataLoader
 from torchvision import transforms
-import Utils
+import Utils 
 
 parser = argparse.ArgumentParser(description='BiFuse script for 360 depth prediction!',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
