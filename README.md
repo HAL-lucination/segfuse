@@ -1,7 +1,7 @@
 # [IEEEVR 2022 Submission] 360 Depth Estimation in the Wild - The Depth360 Dataset and the SegFuse Network
 
-<p align='center'>
-<img src='teaser.png' align="left" width="800"/>
+<p align='left'>
+<img src='teaser.png' width="800"/>
 </p>
 
 ## Getting Started
