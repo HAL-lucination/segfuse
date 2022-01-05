@@ -1,9 +1,7 @@
-# segfuse
-
 # [IEEEVR 2022 Submission] 360 Depth Estimation in the Wild - The Depth360 Dataset and the SegFuse Network
 
 <p align='center'>
-<img src='src/teaser.png'>
+<img src='teaser.png'>
 </p>
 
 ## Getting Started
@@ -26,7 +24,7 @@ cd segfuse
 For review purpose, download our Depth360 dataset at [here](https://drive.google.com/file/d/1460RBiV_YwuYSxqOeBh7qfuYu2HCvw8D/view?usp=sharing)
 
 ### Pretrained Model
-[pretrained Model](https://drive.google.com/file/d/1lFHCyS0zoaP3HzRKYU6DEVYfwdJ7mRi9/view?usp=sharing) and put in a **save** folder:
+[Pretrained Model](https://drive.google.com/file/d/1lFHCyS0zoaP3HzRKYU6DEVYfwdJ7mRi9/view?usp=sharing) and put in the **save** folder:
 ```
 mkdir save
 ```
