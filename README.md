@@ -24,7 +24,7 @@ cd segfuse
 For review purpose, download our Depth360 dataset at [here.](https://drive.google.com/file/d/1460RBiV_YwuYSxqOeBh7qfuYu2HCvw8D/view?usp=sharing)
 
 ### Pretrained Model
-[Pretrained Model](https://drive.google.com/file/d/1lFHCyS0zoaP3HzRKYU6DEVYfwdJ7mRi9/view?usp=sharing) and put in the **save** folder:
+Download the [pretrained model](https://drive.google.com/file/d/1lFHCyS0zoaP3HzRKYU6DEVYfwdJ7mRi9/view?usp=sharing) and put in the **save** folder:
 ```
 mkdir save
 ```
