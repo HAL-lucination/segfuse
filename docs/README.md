@@ -1,10 +1,10 @@
-## Welcome to GitHub Pages
+## 360 Depth Estimation in the Wild - The Depth360 Dataset and the SegFuse Network
 
 You can use the [editor on GitHub](https://github.com/HAL-lucination/segfuse.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### Abstract
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
