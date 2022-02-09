@@ -5,16 +5,18 @@ For more details:
 [Project page](https://segfuse.github.io/) / [Arxiv(to be updated)]()
 
 ## Overview
-<p align='left'>
-<img src='docs/teaser.png' width="800"/>
+<p align='center'>
+<img src='docs/teaser.png' width="600"/>
 </p>
-_We present a method for generating large amounts of color/depth training data from abundant internet 360 videos. After creating a large-scale general omnidirectional dataset, Depth360, we propose an end-to-end two-branch multitasking network, SegFuse to learn single-view depth estimation from it. Our method shows dense, consistent and detailed predictions._
+
+*We present a method for generating large amounts of color/depth training data from abundant internet 360 videos. After creating a large-scale general omnidirectional dataset, Depth360, we propose an end-to-end two-branch multitasking network, SegFuse to learn single-view depth estimation from it. Our method shows dense, consistent and detailed predictions.*
 
 ## Results
-<p align='left'>
-<img src='docs/qualitative.jpg' width="800"/>
+<p align='center'>
+<img src='docs/qualitative.jpg' width="1000"/>
 </p>
-_Qualitative results of the proposed method. Our method generates globally consistent estimation and sharper results at local regions. Detailed comparisons with state-of-the-art can be found in the paper._
+
+*Qualitative results of the proposed method. Our method generates globally consistent estimation and sharper results at local regions. Detailed comparisons with state-of-the-art can be found in the paper.*
 
 ## Getting Started
 #### Requirements
@@ -34,7 +36,7 @@ cd segfuse
 
 ## Depth360 Dataser (v1)
 The Depth360 dataset includes 30000 pairs of color and depth images generated with the test-time training method described in the paper.
-[Depth360 Dataset Link](https://docs.google.com/forms/d/e/1FAIpQLSdh7n-3RE0TnR1T09QFmu-VGQYfH4a2Efh8Od2ISveUJqNqPw/viewform?usp=sf_link)
+[Depth360 dataset link](https://docs.google.com/forms/d/e/1FAIpQLSdh7n-3RE0TnR1T09QFmu-VGQYfH4a2Efh8Od2ISveUJqNqPw/viewform?usp=sf_link)
 
 
 ## Pretrained Model
