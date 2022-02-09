@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Vincent Feng&#39;s Homepage</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https:/vincentfeng.me/"/>
+  <updated>2018-09-24T08:50:57.095Z</updated>
+  <id>https:/vincentfeng.me/</id>
+  
+  <author>
+    <name>Vincent Feng</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Coding Exercises 1 Regular Expression</title>
+    <link href="https:/vincentfeng.me/2018/09/12/CodingExercises1/"/>
+    <id>https:/vincentfeng.me/2018/09/12/CodingExercises1/</id>
+    <published>2018-09-11T23:45:00.000Z</published>
+    <updated>2018-09-24T08:50:57.095Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>Since coding questions that involve manipulation of strings, such as search and substitute some specific characters, or more difficult questions about ciphers, have appeared multiple times during my coding exercises, and the regular expression is one of the most handy tools to tackle this kind of problems, I want to take a quick study note on this topic for my later reference.<br>Surely regular expression’s criteria can easily get overwhelming when coping with complex problems or maintaining afterwards, but handle one criterion at a time with great carefulness can make the situation a lot better (at least for me).</p><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Write a function that receive a string as argument, and print the strength of that string of password onscreen. The strength is determined by criteria of strong, medium and weak passwords.</p><p>In this case, the definition of strong password includes:</p><ul><li>At least 8 characters</li><li>At least 1 capital alphabetical character</li><li>At least 1 lowercase alphabetical character</li><li>At least 1 numerical character</li><li>At least 1 special character (!, @, #, …)</li></ul><p>the definition of medium password includes:</p><ul><li>At least 6 characters</li><li>At least 1 capital or lowercase alphabetical character</li><li>At least 1 numerical character</li></ul><p>the definition of medium password includes:</p><ul><li>At least 6 characters</li><li>Only consists of numerical characters</li></ul><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">def passwordStrength(password):</span><br><span class="line"></span><br><span class="line">      import regex as re</span><br><span class="line">      lowPassRegex = re.compile(r&apos;&apos;&apos;(</span><br><span class="line">          (?=.&#123;6,&#125;) # length requirement of 6</span><br><span class="line">          (\d+) # only numeric characters</span><br><span class="line">          )&apos;&apos;&apos;, re.VERBOSE)</span><br><span class="line">      midPassRegex = re.compile(r&apos;&apos;&apos;(</span><br><span class="line">          (?=.&#123;6,&#125;) # length requirement of 6</span><br><span class="line">          (?=.*[a-z])|(?=.*[A-Z])</span><br><span class="line">          (?=.*[0-9]) # not only numeric characters</span><br><span class="line">          )&apos;&apos;&apos;, re.VERBOSE)</span><br><span class="line">      strongPassRegex = re.compile(r&apos;&apos;&apos;(</span><br><span class="line">          (?=.&#123;8,&#125;) # length requirement of 8</span><br><span class="line">          (?=.*[A-Z]) # at lease one capital character</span><br><span class="line">          (?=.*[a-z]) # at least one lowercase character</span><br><span class="line">          (?=.*[0-9]) # at least one numeric character</span><br><span class="line">          (?=.*[!&quot;#$%&amp;&apos;()*+,\-./:;&lt;=&gt;?@[\\\]^_`&#123;|&#125;~]) # at least one special character</span><br><span class="line">          )&apos;&apos;&apos;, re.VERBOSE)</span><br><span class="line">      weakPass = lowPassRegex.match(password)</span><br><span class="line">      midPass = midPassRegex.match(password)</span><br><span class="line">      strongPass = strongPassRegex.match(password)</span><br><span class="line"></span><br><span class="line">      if strongPass:</span><br><span class="line">          print (&apos;Strong password.&apos;)</span><br><span class="line">      else:</span><br><span class="line">          if midPass:</span><br><span class="line">              print (&apos;Medium password.&apos;)</span><br><span class="line">          else:</span><br><span class="line">              if weakPass:</span><br><span class="line">                  print (&apos;Weak password.&apos;)</span><br><span class="line">              else:</span><br><span class="line">                  print (&apos;Please re-enter a valid password.&apos;)</span><br></pre></td></tr></table></figure><h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2><p>The main goal is to practice the usage of regular expression under a much more realistic scenario.</p><p>It is also worth mentioning that originally and intuitively I used the sequence of <strong>if weak -&gt; if medium -&gt; if strong -&gt; non above</strong>, however during tests, once the input string satisfies the criteria of medium password, the workflow will terminate. The trick of this part is to reverse the sequence, instead of incrementing the strength, decreasing from above is easier.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Intro&quot;&gt;&lt;a href=&quot;#Intro&quot; class=&quot;headerlink&quot; title=&quot;Intro&quot;&gt;&lt;/a&gt;Intro&lt;/h2&gt;&lt;p&gt;Since coding questions that involve manipulation of string
+      
+    
+    </summary>
+    
+      <category term="Study Notes" scheme="https:/vincentfeng.me/categories/Study-Notes/"/>
+    
+    
+      <category term="Python" scheme="https:/vincentfeng.me/tags/Python/"/>
+    
+      <category term="Coding Exercises" scheme="https:/vincentfeng.me/tags/Coding-Exercises/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity Study Notes 3 Importing MMD models into Unity</title>
+    <link href="https:/vincentfeng.me/2018/09/03/UnityStudyNotes3/"/>
+    <id>https:/vincentfeng.me/2018/09/03/UnityStudyNotes3/</id>
+    <published>2018-09-03T12:00:00.000Z</published>
+    <updated>2018-09-05T10:27:51.977Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>Most games, such as Action RPG, platform games, fighting games, include multiple characters or avatars in game for players to control. It is true that there are a lot of well made character models available in the Unity asset store, but free ones with high quality is rather rare.</p><p>To make our game vivid and fun, a good looking avatar can provide great advantages, since no one want to see boring soldiers running around for hours and hours, right? (Yeah, I am talking about you, free soldier asset featured in countless tutorials.)<br>However, designing a new <em>Humanoid</em> character from scratch using modeling softwares such as Maya or Blender for beginners like me is not actually realistic, since the process of systematically learning modeling, rigging and generate lightmaps etc. to create a appealing model is as difficult, if not harder, as making a good game.</p><p>Therefore, since I have messed around with MMD (<a href="https://en.wikipedia.org/wiki/MikuMikuDance" target="_blank" rel="noopener">MikuMikuDance</a>) for some time when I was still in high school, I am kind of familiar with it. Anyway, such prior knowledge is not a must for taking advantage of the well-community-supported, open-sourced library of humanoid models.</p><p><img src="https://renote.jp/uploads/image/file/36566/MMD.jpg" alt="MMDExample"></p><p>In this note, I will elaborate the steps form obtaining .pmx model files to make the models moving in Unity editor.</p><h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><ol><li><strong>Grab a preferred .pmx model file.</strong> First of all, we need to prepare a free MMD model for us to use in later steps. There are different sources and it is impossible to cover them all in this post, so I will just give a simple example. Hundreds of models are available on <a href="https://www6.atwiki.jp/vpvpwiki/pages/141.html#id_eb1ae7d0" target="_blank" rel="noopener">this site</a>, along with different motion animations, so if you want to also apply these complex animations to your character, it is also easy to convert MMD-compatible animation format <em>.vmd</em> into Unity-compatible format <em>.fbx</em>.<br>Anyway, download a MMD model according to your preference and upzip it to get the <em>.pmx</em> file. This is what we need in this step.<br><img src="images/pmx.png" alt="pmx"></li></ol><ol start="2"><li><strong>Get the MMD4Mecanim plugin.</strong> To convert .pmx models into .fbx file, the key is this MMD4Mecanim plugin. It is available at <a href="http://stereoarts.jp" target="_blank" rel="noopener">this link</a>. Scroll down to find the download link. Currently it’s version is beta_20180523, just find the “MMD4Mecanim_Beta_20180523.zip”, click the link and you should be good to go. After the download is finished, uncompress it to get this “<em>MMD4Mecanim.unitypackage</em>“ file, and import it into Unity editor.</li></ol><p><img src="images/mmd4.png" alt="mmd4dmecanim"></p><ol start="3"><li><strong>Convert the .pmx model into Unity compatible .fbx file.</strong> Once the MMD4Mecanim package is imported into the Unity editor, create a new “<em>model</em>“ folder under <em>Assets</em> and copy the <em>.pmx</em> file obtained in the step 1 into the folder. (This is an optional step, just to make things look clean and tidy. You can place the model file anywhere you prefer.) Since we have already imported the MMD4Mecanim package, there should be another <em>your_model_name.MMD4Mecanim.asset</em> automatically created under the same directory. Click that asset and look at the inspector panel, there should be some checkboxes and an “<em>Agree</em>“ button. After carefully reading the notices from the model author (another <strong>Optional</strong> step), press the “<em>Agree</em>“ button, and click the “<em>Process</em>“ button on the next page. After some waiting, you should see the <em>.fbx</em> file automatically generated under the same directory.</li></ol><ul><li><p><strong>Attention</strong>: If you want to attach some motion animations along with the model without the harassment for manually preparing an animator controller by yourself afterwards, you need to drag the <em>.vmd</em> file (Also available on that website.) to the VMD slot before pressing the “<em>Process</em>“ button.</p></li><li><p><strong>Attention</strong>: If you want to attach some <strong>humanoid motion animations</strong> when messing around with the model, make sure the <em>Animation Type</em> under the <em>Rig</em> page of that model is changed to <em>Humanoid</em>. (It is set to <em>Generic</em> by default.) Or the humanoid motion clips you gathered from somewhere else won’t work on this model. I spent some time to figure this out when firstly using this plugin.</p></li></ul><p><img src="images/Humanoid.png" alt="Humanoid"></p><h3 id="GOODJOB"><a href="#GOODJOB" class="headerlink" title="GOODJOB!"></a>GOODJOB!</h3><p>Now we can use the imported character to do different things and create kaleidoscopic games! Next time I will write about how to incorporate our own character in the newly released powerful Unity 3D Game Kit.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Intro&quot;&gt;&lt;a href=&quot;#Intro&quot; class=&quot;headerlink&quot; title=&quot;Intro&quot;&gt;&lt;/a&gt;Intro&lt;/h2&gt;&lt;p&gt;Most games, such as Action RPG, platform games, fighting g
+      
+    
+    </summary>
+    
+      <category term="Study Notes" scheme="https:/vincentfeng.me/categories/Study-Notes/"/>
+    
+    
+      <category term="Unity" scheme="https:/vincentfeng.me/tags/Unity/"/>
+    
+      <category term="Tutorials" scheme="https:/vincentfeng.me/tags/Tutorials/"/>
+    
+      <category term="Game Making Journey" scheme="https:/vincentfeng.me/tags/Game-Making-Journey/"/>
+    
+      <category term="MMD" scheme="https:/vincentfeng.me/tags/MMD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity Study Notes 2 Making a basic AR labyrinth</title>
+    <link href="https:/vincentfeng.me/2018/09/01/UnityStudyNotes2/"/>
+    <id>https:/vincentfeng.me/2018/09/01/UnityStudyNotes2/</id>
+    <published>2018-09-01T09:00:00.000Z</published>
+    <updated>2018-09-05T10:27:53.344Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>Labyrinth is a game consisting of a box with a maze on top with holes. The players need to guide the steel marble on the board by knobs on each side to tilt the playfield and get the marble to the goal of the labyrinth. Such a pretty straightforward idea can be obtained by observing the following image.<br><img src="https://i.ytimg.com/vi/mk2hHseviaI/maxresdefault.jpg" alt="Labyrinth"><br>As I went through the process of building a simple maze game last time, this time I will jot down the notes of turning it into an AR-compatible game, in which the user will tilt a cardboard (ideally) or a piece of paper with a marker on it. The result will be like this ↓:</p><p><img src="images/2_result.jpg" alt="result"></p><h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><ol><li><p><strong>Design a level (map).</strong> To ensure the job can be done swiftly, it is always nice to have something in mind beforehand. Most good games have really well designed levels with proper challenges to make the game attractive. However, since it is not the main goal at this phase, I suggest just search online to find millions of good maze designs and grab a favorite one and then throw it into the Unity editor. For instance, I used this one in this example.</p><p><img src="https://cdn2.iconfinder.com/data/icons/unigrid-bluetone-maps-travel-vol-2/60/007_083_maze_labyrinth_map_2-512.png" alt="map"></p></li><li><p><strong>Build the maze according to the map.</strong> It is not so hard and the steps were elaborated in the last note. Just use cubes and planes to get the job done. In addition, it is also necessary to drop a steel marble at the entrance. In fact, materials and rendering are not very important in this example, so casually find some wood textures, make a material with diffuse shader, and drag-n-drop it on each part of the maze, and also do the same thing to the marble. An alternative way is to utilize the Asset Store built in the Unity editor, quite a lot textures and materials are free to download and easy to import. My result is shown here.</p></li></ol><p><img src="images/2_level.png" alt="level"></p><ol start="3"><li><strong>Make it AR-compatible.</strong> Head to <em>File</em> - <em>Build Settings</em> - <em>Player Settings…</em> - <em>XR Settings</em> - <em>Vuforia Augmented Reality</em> and make sure the box is checked. When necessary assets are automatically imported, press <em>GameObject</em> - <em>Vuforia</em> - <em>ARCamera</em> to add the <em>ARCamera</em> object into the scene. Then, press <em>GameObject</em> - <em>Vuforia</em> - Image to add the <em>ImageTarget</em> object into the scene as well.</li></ol><p>Before rushing forward, it is necessary to go to <a href="https://developer.vuforia.com/" target="_blank" rel="noopener">https://developer.vuforia.com/</a> to register an account, get a free development key under license manager tab and then head back to Unity editor’s <em>ARCamera</em> object’s inspector panel, press <em>Open Vuforia configuration</em> button and paste the license key to <em>App License Key</em>.</p><p>Then, open the browser again and switch to “Target Manager” tab, “Add Database” with a memorable name and “Device” type. “Add Target” of image type and upload the maze map image we just used in the first step as the marker (just for convenience). When it’s done, press the “Download Database” button and get a .unitypackage file. Return to Unity editor and import the downloaded database. After the import is completed, go to the inspector panel of <em>ImageTarget</em> to select our image target. When it is done, the maze image should appear in the scene. Drag all game objects that belong to the maze and the marble to <em>ImageTarget</em> to make them become children of <em>ImageTarget</em>. This step is important to make apps AR-campatible.</p><ul><li><strong>Attention</strong>: Don’t forget to check the <em>load database/Activate</em> boxes in <em>VuforiaConfiguation</em>. (By pressing <em>Open Vuforia configuration</em> button on the <em>ARCamera</em> object.)</li></ul><p><img src="images/2_activate.png" alt="activate"></p><p>Connect a webcam or use built-in cam on the computer and press “play” to see if the marker is working properly. The maze should appear when the camera detects the marker, if not, double check if the database is activated and try moving the camera around.</p><ol start="4"><li><strong>Make it playable.</strong> If the AR function is working successfully, the only thing left is to make the game playable by adding the necessary physics to the objects. We can achieve this in a easy way. Attach <em>Rigidbody</em> to all static elements (walls, floor, etc.) in the scene and make sure that all objects have <em>collider</em> with them. Uncheck <em>Use Gravity</em> to make sure the labyrinth will not fall out of the view. Also, <em>freeze all positions and rotations</em> of them since we do not want the marble to mess up the whole environment.<br>Since we want the marble to freely move around when we tilt the board, we add <em>Collider</em> and <em>Rigidbody</em> to it as well, however, this time we <em>Use Gravity</em> and do not add any constraint.</li></ol><h3 id="DONE"><a href="#DONE" class="headerlink" title="DONE!"></a>DONE!</h3><p>An AR labyrinth game is made merely with in-built physics engine of Unity without any coding.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Intro&quot;&gt;&lt;a href=&quot;#Intro&quot; class=&quot;headerlink&quot; title=&quot;Intro&quot;&gt;&lt;/a&gt;Intro&lt;/h2&gt;&lt;p&gt;Labyrinth is a game consisting of a box with a maze on top
+      
+    
+    </summary>
+    
+      <category term="Study Notes" scheme="https:/vincentfeng.me/categories/Study-Notes/"/>
+    
+    
+      <category term="Unity" scheme="https:/vincentfeng.me/tags/Unity/"/>
+    
+      <category term="Tutorials" scheme="https:/vincentfeng.me/tags/Tutorials/"/>
+    
+      <category term="Game Making Journey" scheme="https:/vincentfeng.me/tags/Game-Making-Journey/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity Study Notes 1 Making a Simplest Maze</title>
+    <link href="https:/vincentfeng.me/2018/08/30/UnityStudyNotes1/"/>
+    <id>https:/vincentfeng.me/2018/08/30/UnityStudyNotes1/</id>
+    <published>2018-08-30T03:00:00.000Z</published>
+    <updated>2018-09-05T10:27:54.568Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://udemy-images.udemy.com/course/750x422/1210008_6859.jpg" alt="Unity Logo"></p><p>As one of the most popular editor/engine to create games, Unity 3D is really suitable for starters because of simplicity and wide support from the community. If the user run into a problem, there mostly exists more than 3 ways to solve it, and they are all few clicks away just by copying &amp; pasting the error to Google.</p><h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>In this series, I would like to take some memo of the tricky steps I met with during the process of creating things. This can be potentially usefully for my own later reference.</p><p>In this first post of Unity learning notes series, I would like to talk about making a very simple 2D/3D maze without any extra package, the result is shown below in the embedded WebGL player. I am currently using Unity 2017.4.0f1. Most steps should be identical for Unity 5.</p><h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><ol><li>Create the level using cubes with desired dimensions, or use blender to make a solid 3D model to drag into the Unity editor instead. For the purpose of simplicity, we just use basic shapes provided by Unity this time. After the shape is finished, create an Materials folder under Assets folder, and create a new material for the stage. In my case, I used Legacy Shaders/Diffuse and chose a grey-ish color as the main screen.<ul><li><strong>Attention</strong>: The transform should definitely be taken great care of. In my case, I decided to use the unit of 1.00, and then adjust positions of all objects based on this step. Therefore it will be whole lot easier to mess around will placements or objects, and it will prevent us from getting into wired issues such as player getting stuck in some invisible holes or gaps.</li><li><strong>Attention 2</strong>: Create an empty and drop all stage related objects into this parent, so we can focus on player, enemy and other stuff.</li><li><strong>Attention 3</strong>: Never forget to create a material at first, and then it apply to the desired object. Also, modifying the material directly will affect all objects with that material, so if you want to create colorful stages in different levels as I wanted to do, I suggest create materials such as LevelOneStage, LevelTwoStage, etc.</li></ul></li></ol><p><img src="images/1.png" alt="stage design"></p><ol start="2"><li>Prepare the player and the goal object. The shape can be arbitrary, however, in order to avoid the problem of rotation, I chose the sphere as my player and give it another material to stand out from the stage.</li></ol><p>In this step, we define the movement of the player by attaching a new script called “PlayerMovement.cs” to the player object. We firstly want to make the player ball respond to keyboard input, to roll to the direction when we press down the corresponding arrow key.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class PlayerMovement : MonoBehaviour &#123;</span><br><span class="line">    public float moveSpeed; // Define a force of acceleration when we press down the key.</span><br><span class="line">    private Vector3 input; // Read the keyboard input.</span><br><span class="line">    public float maxSpeed; // Define a max speed for the player.</span><br><span class="line"></span><br><span class="line">    void Update()</span><br><span class="line">        &#123;</span><br><span class="line">            var rb = this.GetComponent&lt;Rigidbody&gt;(); // We use rigidbody to handle the physics.</span><br><span class="line">            input = new Vector3(Input.GetAxis(&quot;Horizontal&quot;), 0, Input.GetAxis(&quot;Vertical&quot;)); // Deliver the raw keyboard input to the vector &quot;input&quot; we defined here. Since we only want the ball to make 2D moves, the y axis is always 0.</span><br><span class="line">            if (rb.velocity.magnitude &lt; maxSpeed)</span><br><span class="line">            &#123;</span><br><span class="line">                rb.AddForce(input * moveSpeed); // Addforce can push the ball to the direction we want.</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure><ul><li><strong>Attention</strong>: Don’t forget to attach rigidbody, and (sphere) collider to the object. If there is no rigidbody, the ball can fall straight down through the floor. The collider is necessary for later hit detection.</li><li><strong>Attention 2</strong>: Since we defined the moveSpeed and maxSpeed as public values, we need to manually type in the desired values we want to user in the Inspector panel before running the scene.</li><li><strong>Attention 3</strong>: If something is not working, check the Edit - Project Settings - Input to see if key bindings are using “Horizontal” and “Vertical”.</li></ul><ol start="3"><li>Before continue to write scripts for the goal object, we firstly need to duplicate the whole scene, in my case I named it “Level 1”, as a new scene “Level 2”. Then we modify the stage design of “Level 2” by adding some walls, obstacles, etc.</li></ol><p><img src="images/2.png" alt="stage 2 design"></p><p>Then, under File - Build Settings… press the “Add Open Scenes” one by one from the first scene to the last scene. It should be like this:</p><p><img src="images/3.png" alt="add scenes"></p><p>Then we can start writing the level changing script that change the level for us when the player touches the goal. Open up the “PlayerMovement.cs” we created before, and add the following scripts:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void Update()</span><br><span class="line">   &#123;</span><br><span class="line">    ...</span><br><span class="line">    private void OnTriggerEnter(Collider other) // Called when collided with other colliders.</span><br><span class="line">       &#123;</span><br><span class="line">           if (other.transform.tag == &quot;Goal&quot;) // If collided with an object with &quot;Goal&quot; tag.</span><br><span class="line">           &#123;</span><br><span class="line">               GameManager.CompleteLevel(); // Call the CompleteLevel() function under GameManager.</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   ...</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><p>Since we need to call the CompleteLevel() function under GameManager, we need to firstly create an empty object called “GameManager” in the scene, and attach a new script “GameManager.cs” to it.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class GameManager : MonoBehaviour &#123;</span><br><span class="line">    public static int currentLevel = 0; // The first level is essentially Level 0 to Unity, so we start the counter from 0.</span><br><span class="line">    public static void CompleteLevel()</span><br><span class="line">    &#123;</span><br><span class="line">        currentLevel++; // Once the player touches the goal, the level counter plus one,</span><br><span class="line">        Application.LoadLevel(currentLevel);// and load the next level.</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Once the scripts are taken care of, we need to add the “Goal” tag to the goal object in the inspector panel.</p><p><img src="images/4.png" alt="add tag"><br><em>Voila! Test it out to see if you can switch between stages.</em></p><h3 id="Save-all-stuff-for-the-next-time"><a href="#Save-all-stuff-for-the-next-time" class="headerlink" title="Save all stuff for the next time."></a>Save all stuff for the next time.</h3><h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;https://udemy-images.udemy.com/course/750x422/1210008_6859.jpg&quot; alt=&quot;Unity Logo&quot;&gt;&lt;/p&gt;
+&lt;p&gt;As one of the most popular editor/engi
+      
+    
+    </summary>
+    
+      <category term="Study Notes" scheme="https:/vincentfeng.me/categories/Study-Notes/"/>
+    
+    
+      <category term="Unity" scheme="https:/vincentfeng.me/tags/Unity/"/>
+    
+      <category term="Tutorials" scheme="https:/vincentfeng.me/tags/Tutorials/"/>
+    
+      <category term="Game Making Journey" scheme="https:/vincentfeng.me/tags/Game-Making-Journey/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity Study Notes 0 Starting from Scratch Again</title>
+    <link href="https:/vincentfeng.me/2018/08/30/UnityStudyNotes0/"/>
+    <id>https:/vincentfeng.me/2018/08/30/UnityStudyNotes0/</id>
+    <published>2018-08-29T15:00:00.000Z</published>
+    <updated>2018-09-05T10:27:32.977Z</updated>
+    
+    <content type="html"><![CDATA[<p>To myself,</p><p>Once again, you sit down before the desk and open up the editor, plotting to write about something with the excitement of successfully setting up another new website.</p><p>Then, just in the blink of an eye, it happens again: the excitement fades away completely, and all you left with is a blank mind, like déjà vu. Starting something isn’t particularly hard, but to keep it going is a real challenge.</p><p>Trying to accomplish something is fun, but leaving something behind is just not one of your habits. Thanks to this, countless well designed hallow websites were set up on the spur of the moment and ended dying soundlessly. When you need to turn back and pick up some skills again, only some faintest memories are mocking me in your mind for leaving no footsteps behind you.</p><p>Regret is just a waste of time, and learning something quickly to throw it away within a couple of days is even more so. Will this time be any difference?</p><p>You love games, you love the excitement, the tension, the touching feeling they bring to you. The journey of making games is as well marvelous, the feeling of satisfaction is overwhelming just by staring at the character running around after you accomplish something and trying to test out these features. Surely countless bugs, failures and struggles await you, but no one will ever blame you except yourself for giving up the whole thing to start something else since it is your own choice to drift into mediocrity.</p><p>Life is short. Leave something behind when it’s still not too late.</p><p>Vincent<br>2018.8.30</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;To myself,&lt;/p&gt;
+&lt;p&gt;Once again, you sit down before the desk and open up the editor, plotting to write about something with the excitement 
+      
+    
+    </summary>
+    
+      <category term="Study Notes" scheme="https:/vincentfeng.me/categories/Study-Notes/"/>
+    
+    
+      <category term="Unity" scheme="https:/vincentfeng.me/tags/Unity/"/>
+    
+      <category term="Tutorials" scheme="https:/vincentfeng.me/tags/Tutorials/"/>
+    
+      <category term="Game Making Journey" scheme="https:/vincentfeng.me/tags/Game-Making-Journey/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https:/vincentfeng.me/2018/08/18/hello-world/"/>
+    <id>https:/vincentfeng.me/2018/08/18/hello-world/</id>
+    <published>2018-08-18T13:33:08.607Z</published>
+    <updated>2018-09-05T09:12:29.114Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is my initial post!<br>Commands for generating and deploying posts are reserved in this post.</p><p>Welcome to my <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is my very first (automatically generated) post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If I get any problems when using Hexo, the answer can be found in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or by asking the author on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;This is my initial post!&lt;br&gt;Commands for generating and deploying posts are reserved in this post.&lt;/p&gt;
+&lt;p&gt;Welcome to my &lt;a href=&quot;https://
+      
+    
+    </summary>
+    
+      <category term="Web Related" scheme="https:/vincentfeng.me/categories/Web-Related/"/>
+    
+    
+  </entry>
+  
+</feed>
