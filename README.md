@@ -1,8 +1,14 @@
-# [IEEEVR 2022 Submission] 360 Depth Estimation in the Wild - The Depth360 Dataset and the SegFuse Network
+# 360 Depth Estimation in the Wild - The Depth360 Dataset and the SegFuse Network
 
 <p align='left'>
-<img src='teaser.png' width="800"/>
+<img src='docs/teaser.png' width="800"/>
 </p>
+
+In IEEE Conference on Virtual Reality and 3D User Interfaces (IEEE VR), 2022
+
+For more details:
+[Project page](https://segfuse.github.io/)
+[Arxiv(to be updated)]()
 
 ## Getting Started
 #### Requirements
