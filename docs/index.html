@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Qi Feng, Hubert P.H. Shum, Shigeo MorishimaIn IEEE Conference on Virtual Reality and 3D User Interfaces (IEEE VR), 2022 OverviewFigure 1. We present a method for generating large amounts of color&amp;#x2F">
+<meta property="og:type" content="website">
+<meta property="og:title" content="360 Depth Estimation in the Wild - The Depth360 Dataset and the SegFuse Network">
+<meta property="og:url" content="http://https//hal-lucination.github.io/segfuse/index.html/index.html">
+<meta property="og:site_name" content="360 Depth Estimation in the Wild - The Depth360 Dataset and the SegFuse Network">
+<meta property="og:description" content="Qi Feng, Hubert P.H. Shum, Shigeo MorishimaIn IEEE Conference on Virtual Reality and 3D User Interfaces (IEEE VR), 2022 OverviewFigure 1. We present a method for generating large amounts of color&amp;#x2F">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/HAL-lucination/segfuse/blob/main/docs/teaser.png?raw=true">
+<meta property="og:image" content="https://github.com/HAL-lucination/segfuse/blob/main/docs/qualitative.jpg?raw=true">
+<meta property="article:published_time" content="2022-02-09T21:12:15.325Z">
+<meta property="article:modified_time" content="2022-02-09T21:12:15.325Z">
+<meta property="article:author" content="Qi Feng, Hubert P.H. Shum, Shigeo Morishima">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/HAL-lucination/segfuse/blob/main/docs/teaser.png?raw=true">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/hal-lucination.github.io/segfuse/index.html/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/hal-lucination.github.io/segfuse/index.html/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/hal-lucination.github.io/segfuse/index.html/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>360 Depth Estimation in the Wild - The Depth360 Dataset and the SegFuse Network</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/hal-lucination.github.io/segfuse/index.html/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+    <div class="content index py4">
+        
+          <header id="header">
+  <a href="/hal-lucination.github.io/segfuse/index.html/">
+  
+    <div id="title">
+      <h1>360 Depth Estimation in the Wild - The Depth360 Dataset and the SegFuse Network</h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#" aria-label="Menu"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+      
+    </ul>
+  </div>
+</header>
+
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  
+
+  <div class="content" itemprop="articleBody">
+      
+          <h4 id="Qi-Feng-Hubert-P-H-Shum-Shigeo-Morishima"><a href="#Qi-Feng-Hubert-P-H-Shum-Shigeo-Morishima" class="headerlink" title="Qi Feng, Hubert P.H. Shum, Shigeo Morishima"></a>Qi Feng, Hubert P.H. Shum, Shigeo Morishima</h4><p>In IEEE Conference on Virtual Reality and 3D User Interfaces (IEEE VR), 2022</p>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p><img src="https://github.com/HAL-lucination/segfuse/blob/main/docs/teaser.png?raw=true" alt="Teaser"><br><em>Figure 1. We present a method for generating large amounts of color&#x2F;depth training data from abundant internet 360 videos. After creating a large-scale general omnidirectional dataset, Depth360, we propose an end-to-end two-branch multitasking network, SegFuse to learn single-view depth estimation from it. Our method shows dense, consistent and detailed predictions.</em></p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>Single-view depth estimation from omnidirectional images has gained popularity with its wide range of applications such as autonomous driving and scene reconstruction. Although data-driven learning-based methods demonstrate significant potential in this field, scarce training data and ineffective 360 estimation algorithms are still two key limitations hindering accurate estimation across diverse domains.<br>In this work, we first establish a large-scale dataset with varied settings called Depth360 to tackle the training data problem. This is achieved by exploring the use of a plenteous source of data, 360 videos from the internet, using a test-time training method that leverages unique information in each omnidirectional sequence. With novel geometric and temporal constraints, our method generates consistent and convincing depth samples to facilitate single-view estimation.<br>We then propose an end-to-end two-branch multi-task learning network, SegFuse, that mimics the human eye to effectively learn from the dataset and estimate high-quality depth maps from diverse monocular RGB images. With a peripheral branch that uses equirectangular projection for depth estimation and a foveal branch that uses cubemap projection for semantic segmentation, our method predicts consistent global depth while maintaining sharp details at local regions. Experimental results show favorable performance against the state-of-the-art methods.</p>
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><p><img src="https://github.com/HAL-lucination/segfuse/blob/main/docs/qualitative.jpg?raw=true" alt="results"><br><em>Figure 2. Qualitative results of the proposed method. Our method generates globally consistent estimation and sharper results at local regions. Detailed comparisons with state-of-the-art can be found in the paper.</em></p>
+<h2 id="Depth360-Dataser-v1"><a href="#Depth360-Dataser-v1" class="headerlink" title="Depth360 Dataser (v1)"></a>Depth360 Dataser (v1)</h2><p>The Depth360 dataset includes 30000 pairs of color and depth images generated with the test-time training method described in the paper.</p>
+<p><a target="_blank" rel="noopener" href="https://docs.google.com/forms/d/e/1FAIpQLSdh7n-3RE0TnR1T09QFmu-VGQYfH4a2Efh8Od2ISveUJqNqPw/viewform?usp=sf_link">Depth360 Dataset</a></p>
+<h2 id="Source-Code"><a href="#Source-Code" class="headerlink" title="Source Code"></a>Source Code</h2><p>View on <a target="_blank" rel="noopener" href="https://github.com/HAL-lucination/segfuse">GitHub</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/HAL-lucination/segfuse.git</span><br><span class="line"><span class="built_in">cd</span> segfuse</span><br></pre></td></tr></table></figure>
+<h2 id="Citations"><a href="#Citations" class="headerlink" title="Citations"></a>Citations</h2><p>This will be updated after the conference.</p>
+<h2 id="Acknowledgements"><a href="#Acknowledgements" class="headerlink" title="Acknowledgements"></a>Acknowledgements</h2><p>We appreciate the anonymous reviewers for their valuable feedback. This research was supported by JST-Mirai Program (JPMJMI19B2), JSPS KAKENHI (19H01129, 19H04137, 21H0504) and the Royal Society (IES\ R2\ 181024).</p>
+
+        
+  </div>
+</article>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2020-2022
+    Qi Feng, Hubert P.H. Shum, Shigeo Morishima
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+
+<script src="/hal-lucination.github.io/segfuse/index.html/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
